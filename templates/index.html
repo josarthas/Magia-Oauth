@@ -2,20 +2,20 @@
 {% block containercontent %}
 <p class="lead">Bienvenido a la entrada de la APP Magia y Tecnología, introduce los datos de la cuenta de twitter en los siguientes pasos</p>
 <div class="hero-unit">
-	<p>To get started, we'll need you to authorize twauth-web to access your Twitter account. More information on what is
-		required is available from Twitter's <a href="https://developer.twitter.com/en/docs/basics/authentication/overview/oauth">OAuth</a>
-		overview.</p>
-	<p>Here's our plan:</p>
+	<p>Autorizaremos a MAgia y Tecnología para acceder a tu cuenta de Twitter
+		mediante el protocolo <a href="https://developer.twitter.com/en/docs/basics/authentication/overview/oauth">OAuth</a>
+		</p>
+	<p>En resumen:</p>
 	<ol>
-		<li>We're going to generate an OAuth request token that we will use when sending you to Twitter to grant us access.</li>
-		<li>Then we will redirect you to Twitter.com using our tokens from step 1, for you to authorize our app.</li>
-		<li>While at Twitter.com you will authorize twauth-web and you'll then be redirected back to us.</li>
-		<li>We will consume the OAuth params passed back to our callback URL. Using those values, we will then get your auth
-			token from the Twitter API.</li>
-		<li>Finally, to confirm that all has been authorized, we'll make an authenticated call to the Twitter API to get some
-			information about the user who authorized the app, to show we are able to retrieve this data on your behalf.</li>
+		<li>Generaremos un token OAuth, que enviaremos a Twitter para garantizar el acceso</li>
+		<li>Te redirigiremos a la página principal de Twitter para que inicies sesión</li>
+		<li>Ahí autorizarás a nuestra APP (Magia y Tecnología) para usar tu cuenta</li>
+		<li>Consumiremos los parámetros OAuth para terminar de realizar la conexión entre Twiter y nosotros
+			Usando esos valores, obtendremos tus tokens de Acceso.</li>
+		<li>Finalmente, para confirmar que todo está en orden y fuimos autorizados, haremos una llamada a la API de Twitter para obtener información básica sobre tu cuenta
+			y te mostraremos esos datos aquí</li>
 	</ol>
 </div>
-<p>Ready to give this a shot?</p>
-<a href="/start" class="btn btn-small btn-success">Let's Begin</a>
+<p>¿Continuar?</p>
+<a href="/start" class="btn btn-small btn-success">Iniciar sesión</a>
 {% endblock %}

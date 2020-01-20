@@ -1,29 +1,23 @@
 {% extends "base.html" %}
 {% block title %}success{% endblock %}
 {% block containercontent %}
-<h2>success</h2>
-<p>Thank you, <strong>{{ name }}</strong>, for authorizing twauth-web an access token for <a href="https://twitter.com/{{ screen_name }}">@{{
-		screen_name }}</a>. We've successfully received your access token and confirmed it by retrieving some basic details
-	on your behalf from the Twitter API. Yay!</p>
-<p>Here is what we pulled from the API on your behalf:</p>
+<h2>Éxito</h2>
+<p>Gracias, <strong>{{ name }}</strong>, por autorizar un token de acceso para <a href="https://twitter.com/{{ screen_name }}">@{{
+		screen_name }}</a>. Hemos confirmado que nos autorizas el uso de tu cuenta y te damos unos datos para confirmarlo</p>
+<p>La API de Twitter nos ha devuelto ésto::</p>
 <ul>
-	<li>You have Tweeted <span class="label label-success">{{ statuses_count }}</span> times.</li>
-	<li>You have <span class="label label-success">{{ followers_count }}</span> followers.</li>
-	<li>You follow <span class="label label-success">{{ friends_count }}</span> users.</li>
+	<li>Has twitteado <span class="label label-success">{{ statuses_count }}</span> veces.</li>
+	<li>Tienes <span class="label label-success">{{ followers_count }}</span> seguidores.</li>
+	<li>Sigues a <span class="label label-success">{{ friends_count }}</span> cuentas.</li>
 </ul>
-<p>That's it, there's nothing left for you in this demo. Now, because this is a demo and we don't want to access your
-	data any longer, we've deleted our local copy of your token. You can be extra safe and revoke our token from your <a
-	 href="https://twitter.com/settings/applications">account settings</a> on Twitter.</p>
-<a href="/" class="btn btn-small btn-primary">Let me try again</a>
+<p>Nos quedaremos con una copia de tus tokens de acceso para poder usar tu cuenta en el futuro, puedes revocar el acceso que nos otorgaste cuando quieras, <a
+	 href="https://twitter.com/settings/applications">aquí</a></p>
+<a href="/logintw" class="btn btn-small btn-primary">Inicio</a>
 <hr>
 <div class="bg-info" style="padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;">
-	<p><strong>What did we just do?</strong></p>
-	<p>We sent you to an <a href="https://developer.twitter.com/en/docs/basics/authentication/api-reference/authorize"><strong>authorization
-				URL</strong></a>
-		at Twitter that included the temporary request token. When you authorized our app, Twitter redirected you back to our
-		callback URL with our request token and a verifier parameter. When then called the <a href="https://developer.twitter.com/en/docs/basics/authentication/api-reference/access_token"><strong>{{
-				access_token_url }}</strong></a> endpoint with our application API key, API secret, the request token and the
-		oauth_verifier from the callback. That endpoint provided us with an access token that we could then store and use for
-		calling the APIs on your behalf.</p>
+	<p><strong>¿Qué hicimos?</strong></p>
+	<p>Te enviamos a una <a href="https://developer.twitter.com/en/docs/basics/authentication/api-reference/authorize"><strong>URL de autorización</strong></a>
+		en Twitter que incluye el token temporal. Cuando nos autorizaste, Twitter te regresó aquí mediante un enlace autorizado configurado en la aplicación, cuando llamamos <a href="https://developer.twitter.com/en/docs/basics/authentication/api-reference/access_token"><strong>{{
+				access_token_url }}</strong></a> al endpoint con nuestros tokens de acceso a la aplicación. Usamos esa información para guardarla y así utilizar tu cuenta en un futuro.</p>
 </div>
 {% endblock %}
