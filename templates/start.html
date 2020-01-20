@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 {% block title %}start{% endblock %}
 {% block containercontent %}
-<h2>Inicio (Magia y Tecnología)</h2>
-<p>We've generated the OAuth request token (<code>{{ oauth_token }}</code>) and are ready for you to authorize <strong>twauth-web</strong>!
-    Just click the button below, you'll be taken to Twitter to login (if you aren't already) and to grant access to
-    <strong>twauth-web</strong>. Afterward you'll be redirected back to us.</p>
-<p><a href="{{ authorize_url }}?oauth_token={{ oauth_token }}" class="btn btn-small btn-success">Authorize twauth-web</a></p>
+<h2>Inicio</h2>
+<p>Hemos generado un Token de Acceso (<code>{{ oauth_token }}</code>) y estamos listos para autorizar a <strong>Magia y Tecnología</strong>!
+    Presiona el botón de abajo y serás llevado a Twitter a iniciar sesión (si aún no lo has hecho)para garantizar el acceso a
+    <strong>Magia y Tecnología</strong>. Después serás redirigido a nosotros.</p>
+<p><a href="{{ authorize_url }}?oauth_token={{ oauth_token }}" class="btn btn-small btn-success">Autorizar a Magia y Tecnología</a></p>
 <hr>
 <div class="bg-info" style="padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;">
-    <p><strong>What did we just do?</strong></p>
-    <p>We called <a href="https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token"><strong>{{
-                request_token_url }}</strong></a> with our application API key and API secret to get a temporary OAuth
-        request token. We passed our desired callback URL to this method so that Twitter knows where to redirect you
-        after you authorize our app. Note that we had previously already added the callback URL value to the whitelist
-        for
-        our app on the
-        <a href="https://developer.twitter.com/"></a>Twitter developer portal</a>.</p>
+    <p><strong>¿Qué hicimos?</strong></p>
+    <p>Llamamos <a href="https://developer.twitter.com/en/docs/basics/authentication/api-reference/request_token"><strong>{{
+                request_token_url }}</strong></a> con los tokens de acceso de nuestra aplicacion para obtener una llave de acceso temporal. Le enviamos esta información a twitter para que ellos sepan a donde redirigirte
+      Después de autorizar a nuestra APP. Todo esta información ya fue previamente configurada en el
+        <a href="https://developer.twitter.com/"></a>Portal de Desarrollador de Twitter</a>.</p>
 </div>
 {% endblock %}
