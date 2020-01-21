@@ -119,7 +119,7 @@ def callback():
     name = response['name']
     vals = (screen_name, "Root2019*", 'APP_CONSUMER_KEY', 'APP_CONSUMER_SECRET', real_oauth_token, real_oauth_token_secret)
     cursor.execute(sql, vals)
-    conn.comit()
+    conn.commit()
     print(cursor.rowcount, "record inserted.")
 
     # don't keep this token and secret in memory any longer
