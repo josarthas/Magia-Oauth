@@ -37,8 +37,7 @@ def start():
     app_callback_url = url_for('callback', _external=True)
 
     # Generate the OAuth request tokens, then display them
-    APPCK=app.config['APP_CONSUMER_KEY']
-    APPCS=app.config['APP_CONSUMER_SECRET']
+
     consumer = oauth.Consumer(
         app.config['APP_CONSUMER_KEY'], app.config['APP_CONSUMER_SECRET'])
     client = oauth.Client(consumer)
@@ -65,7 +64,8 @@ def callback():
     oauth_token = request.args.get('oauth_token')
     oauth_verifier = request.args.get('oauth_verifier')
     oauth_denied = request.args.get('denied')
-
+    APPCK=app.config['APP_CONSUMER_KEY']
+    APPCS=app.config['APP_CONSUMER_SECRET']
     # if the OAuth request was denied, delete our local token
     # and show an error message
     if oauth_denied:
