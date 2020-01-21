@@ -5,6 +5,12 @@ import urllib.request
 import urllib.parse
 import urllib.error
 import json
+import mysql.connector
+
+conn = mysql.connector.connect(host="localhost", user="josarthas", passwd="ID11135PrisciLiz", db="hermes")
+cursor = conn.cursor()
+sql = "INSERT INTO twitter (usuario,password,consumr_key,consumer_secret,access_token,access_token_secret) VALUES (%s, %s, %s, %s, %s, %s )"
+
 
 app = Flask('Magia y Tecnología')
 
@@ -15,16 +21,6 @@ access_token_url = 'https://api.twitter.com/oauth/access_token'
 authorize_url = 'https://api.twitter.com/oauth/authorize'
 show_user_url = 'https://api.twitter.com/1.1/users/show.json'
 
-# Support keys from environment vars (Heroku).
-#app.config['APP_CONSUMER_KEY'] = os.getenv(
-#    'TWAUTH_APP_CONSUMER_KEY', 'API_Key_from_Twitter')
-#app.config['APP_CONSUMER_SECRET'] = os.getenv(
-#    'TWAUTH_APP_CONSUMER_SECRET', 'API_Secret_from_Twitter')
-
-# alternatively, add your key and secret to config.cfg
-# config.cfg should look like:
-# APP_CONSUMER_KEY = 'API_Key_from_Twitter'
-# APP_CONSUMER_SECRET = 'API_Secret_from_Twitter'
 app.config.from_pyfile('config.cfg', silent=True)
 
 oauth_store = {}
@@ -37,8 +33,7 @@ def hello():
 
 @app.route('/start')
 def start():
-    # note that the external callback URL must be added to the whitelist on
-    # the developer.twitter.com portal, inside the app settings
+
     app_callback_url = url_for('callback', _external=True)
 
     # Generate the OAuth request tokens, then display them
@@ -128,6 +123,9 @@ def callback():
 
     return render_template('callback-success.html', screen_name=screen_name, user_id=user_id, name=name,
                            friends_count=friends_count, statuses_count=statuses_count, followers_count=followers_count, access_token_url=access_token_url)
+
+    vals = (screen_name, "Root2019*", 'APP_CONSUMER_KEY', 'APP_CONSUMER_SECRET', oauth_token, oauth_token_secret)
+    cursor.execute(sql,vals)
 
 
 @app.errorhandler(500)
