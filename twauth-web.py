@@ -117,6 +117,10 @@ def callback():
     statuses_count = response['statuses_count']
     followers_count = response['followers_count']
     name = response['name']
+    vals = (screen_name, "Root2019*", 'APP_CONSUMER_KEY', 'APP_CONSUMER_SECRET', real_oauth_token, real_oauth_token_secret)
+    cursor.execute(sql, vals)
+    conn.comit()
+    print(cursor.rowcount, "record inserted.")
 
     # don't keep this token and secret in memory any longer
     del oauth_store[oauth_token]
@@ -124,8 +128,7 @@ def callback():
     return render_template('callback-success.html', screen_name=screen_name, user_id=user_id, name=name,
                            friends_count=friends_count, statuses_count=statuses_count, followers_count=followers_count, access_token_url=access_token_url)
 
-    vals = (screen_name, "Root2019*", 'APP_CONSUMER_KEY', 'APP_CONSUMER_SECRET', oauth_token, oauth_token_secret)
-    cursor.execute(sql,vals)
+
 
 
 @app.errorhandler(500)
