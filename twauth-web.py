@@ -7,7 +7,7 @@ import urllib.error
 import json
 import mysql.connector
 
-conn = mysql.connector.connect(host="localhost", user="josarthas", passwd="ID11135PrisciLiz", db="hermes")
+conn = mysql.connector.connect(host="localhost", user="magia_hermes", passwd="Root2019*", db="magia_hermes")
 cursor = conn.cursor()
 sql = "INSERT INTO twitter (usuario,password,consumr_key,consumer_secret,access_token,access_token_secret) VALUES (%s, %s, %s, %s, %s, %s )"
 
