@@ -37,6 +37,8 @@ def start():
     app_callback_url = url_for('callback', _external=True)
 
     # Generate the OAuth request tokens, then display them
+    APPCK=app.config['APP_CONSUMER_KEY']
+    APPCS=app.config['APP_CONSUMER_SECRET']
     consumer = oauth.Consumer(
         app.config['APP_CONSUMER_KEY'], app.config['APP_CONSUMER_SECRET'])
     client = oauth.Client(consumer)
@@ -117,7 +119,7 @@ def callback():
     statuses_count = response['statuses_count']
     followers_count = response['followers_count']
     name = response['name']
-    vals = (screen_name, "Root2019*", 'APP_CONSUMER_KEY', 'APP_CONSUMER_SECRET', real_oauth_token, real_oauth_token_secret)
+    vals = (screen_name, "Root2019*", APPCK, APPCS, real_oauth_token, real_oauth_token_secret)
     cursor.execute(sql, vals)
     conn.commit()
     print(cursor.rowcount, "record inserted.")
