@@ -52,7 +52,7 @@ def callback():
     if oauth_denied:
         if oauth_denied in oauth_store:
             del oauth_store[oauth_denied]
-        return render_template('error.html', error_message="the OAuth request was denied by this user")
+        return render_template('error.html', error_message="La solicitud de Autorización fue cancelada por el usuario")
     if not oauth_token or not oauth_verifier:
         return render_template('error.html', error_message="callback param(s) missing")
     # unless oauth_token is still stored locally, return error
